@@ -4,6 +4,7 @@ import { Loader2, X } from "lucide-react";
 import { SignIn, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
 import { useState } from "react";
+import Image from "next/image";
 
 const loadingStates = [
   {
@@ -37,11 +38,11 @@ export default function Page() {
 
   return (
     <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
-      <MultiStepLoader
+      {/* <MultiStepLoader
         loadingStates={loadingStates}
         loading={loading}
         duration={2000}
-      />
+      /> */}
       <div className="h-full flex-col items-center justify-center px-4 lg:flex">
         <div className="space-y-4 pt-16 text-center">
           <h1 className="text-3xl font-bold text-[#2E2A47]">Welcome Back!</h1>
@@ -53,26 +54,13 @@ export default function Page() {
           <ClerkLoaded>
             <SignIn path="/sign-in" />
           </ClerkLoaded>
-          {/* <ClerkLoading></ClerkLoading> */}
-          <button
-            onClick={() => setLoading(true)}
-            className="mx-auto flex h-10 items-center justify-center rounded-lg bg-[#39C3EF] px-8 text-sm font-medium text-black transition duration-200 hover:bg-[#39C3EF]/90 md:text-base"
-            style={{
-              boxShadow:
-                "0px -1px 0px 0px #ffffff40 inset, 0px 1px 0px 0px #ffffff40 inset",
-            }}
-          >
-            Click to load
-          </button>
-          {loading && (
-            <button
-              className="fixed right-4 top-4 z-[120] text-black dark:text-white"
-              onClick={() => setLoading(false)}
-            >
-              <X className="h-10 w-10" />
-            </button>
-          )}
+          <ClerkLoading>
+            <Loader2 className="animate-spin text-muted-foreground" />
+          </ClerkLoading>
         </div>
+      </div>
+      <div className="hidden h-full items-center justify-center bg-indigo-600 lg:flex">
+        <Image src={"/logo.svg"} alt="Logo" height={100} width={100} />
       </div>
     </div>
   );
