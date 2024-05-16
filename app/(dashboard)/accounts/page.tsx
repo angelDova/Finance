@@ -1,9 +1,32 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 import React from "react";
+import { Payment, columns } from "./columns";
+import { DataTable } from "@/components/data-table";
+
+const data: Payment[] = [
+  {
+    id: "728ed52f",
+    amount: 100,
+    status: "pending",
+    email: "a@example.com",
+  },
+  {
+    id: "728ed52f",
+    amount: 500,
+    status: "pending",
+    email: "b@example.com",
+  },
+  {
+    id: "728ed52f",
+    amount: 1000,
+    status: "success",
+    email: "c@example.com",
+  },
+];
 
 type Props = {};
 
@@ -19,6 +42,15 @@ const AccountsPage = (props: Props) => {
             Add new
           </Button>
         </CardHeader>
+        <CardContent>
+          <DataTable
+            columns={columns}
+            data={data}
+            filterKey="email"
+            onDelete={() => {}}
+            disabled={false}
+          />
+        </CardContent>
       </Card>
     </div>
   );
