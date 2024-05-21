@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div className="">
-      <Button onClick={onOpen}>Add an account</Button>
+      <Button onClick={onOpen}>Add an account...</Button>
     </div>
   );
 }
