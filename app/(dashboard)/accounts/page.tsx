@@ -8,7 +8,7 @@ import { columns } from "./columns";
 import { DataTable } from "@/components/data-table";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Loader2 } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 import BarLoader from "@/components/ui/bar-loader";
 import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete";
 
@@ -45,6 +45,7 @@ const AccountsPage = (props: Props) => {
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
           <CardTitle className="line-clamp-1 text-xl">Accounts Page</CardTitle>
           <Button onClick={newAccount.onOpen} size={"sm"}>
+            <Plus className="mr-2 size-4" />
             Add new
           </Button>
         </CardHeader>
